@@ -19,10 +19,15 @@ public class GUI implements ActionListener {
     JMenu menuFont, menuFontSize;
 
     //Format Menu
-    JMenuItem iWrap, iFontArial, iFontComicSans, iFontHelvetica, iFontTimesNewRoman, iFontSize8, iFontSize12, iFontSize16, iFontSize20, iFontSize24;
+    JMenuItem iWrap, iFontArial, iFontComicSans, iFontTimesNewRoman, iFontSize8, iFontSize12, iFontSize16, iFontSize20, iFontSize24;
     Function_File file = new Function_File(this);
 
     Function_Format format = new Function_Format(this);
+
+    //Color Menu
+    JMenuItem iColor1, iColor2, iColor3;
+
+    Function_Color color = new Function_Color(this);
 
     public static void main(String[] args){
         new GUI();
@@ -34,6 +39,12 @@ public class GUI implements ActionListener {
         createMenuBar();
         createFileMenu();
         createFormatMenu();
+        createColorMenu();
+
+        format.selectedFont  = "Arial";
+        format.createFont(16);
+        format.wordWrap();
+        color.changeColor("Beige");
 
         window.setVisible(true);
     }
@@ -109,15 +120,10 @@ public class GUI implements ActionListener {
         iFontArial.setActionCommand("Arial");
         menuFont.add(iFontArial);
 
-        iFontComicSans = new JMenuItem("Comic Sans");
+        iFontComicSans = new JMenuItem("Comic Sans MS");
         iFontComicSans.addActionListener(this);
-        iFontComicSans.setActionCommand("Comic Sans");
+        iFontComicSans.setActionCommand("Comic Sans MS");
         menuFont.add(iFontComicSans);
-
-        iFontHelvetica = new JMenuItem("Helvetica");
-        iFontHelvetica.addActionListener(this);
-        iFontHelvetica.setActionCommand("Helvetica");
-        menuFont.add(iFontHelvetica);
 
         iFontTimesNewRoman = new JMenuItem("Times New Roman");
         iFontTimesNewRoman.addActionListener(this);
@@ -153,6 +159,22 @@ public class GUI implements ActionListener {
         menuFontSize.add(iFontSize24);
     }
 
+    public void createColorMenu() {
+        iColor1 = new JMenuItem("Beige");
+        iColor1.addActionListener(this);
+        iColor1.setActionCommand("Beige");
+        menuColor.add(iColor1);
+
+        iColor2 = new JMenuItem("Dark");
+        iColor2.addActionListener(this);
+        iColor2.setActionCommand("Dark");
+        menuColor.add(iColor2);
+
+        iColor3 = new JMenuItem("Cyber");
+        iColor3.addActionListener(this);
+        iColor3.setActionCommand("Cyber");
+        menuColor.add(iColor3);
+    }
 
     @Override
     public void actionPerformed(ActionEvent e){
@@ -165,6 +187,17 @@ public class GUI implements ActionListener {
             case "Save As": file.saveAs(); break;
             case "Exit": file.exit(); break;
             case "Word Wrap": format.wordWrap(); break;
+            case "Arial": format.setFont(command);break;
+            case "Comic Sans MS": format.setFont(command);break;
+            case "Times New Roman": format.setFont(command);break;
+            case "size8": format.createFont(8); break;
+            case "size12": format.createFont(12); break;
+            case "size16": format.createFont(16); break;
+            case "size20": format.createFont(20); break;
+            case "size24": format.createFont(24); break;
+            case "Beige": color.changeColor(command);break;
+            case "Dark": color.changeColor(command);break;
+            case "Cyber": color.changeColor(command);break;
         }
     }
 }
