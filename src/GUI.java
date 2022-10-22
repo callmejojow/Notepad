@@ -8,6 +8,7 @@ public class GUI implements ActionListener {
     //Text Area Component
     JTextArea textArea;
     JScrollPane scrollPane;
+    boolean wordWrapOn = false;
 
     //Navigation
     JMenuBar menuBar;
@@ -106,22 +107,22 @@ public class GUI implements ActionListener {
         iFontArial = new JMenuItem("Arial");
         iFontArial.addActionListener(this);
         iFontArial.setActionCommand("Arial");
-        menuFormat.add(iFontArial);
+        menuFont.add(iFontArial);
 
         iFontComicSans = new JMenuItem("Comic Sans");
         iFontComicSans.addActionListener(this);
         iFontComicSans.setActionCommand("Comic Sans");
-        menuFormat.add(iFontComicSans);
+        menuFont.add(iFontComicSans);
 
         iFontHelvetica = new JMenuItem("Helvetica");
         iFontHelvetica.addActionListener(this);
         iFontHelvetica.setActionCommand("Helvetica");
-        menuFormat.add(iFontHelvetica);
+        menuFont.add(iFontHelvetica);
 
         iFontTimesNewRoman = new JMenuItem("Times New Roman");
         iFontTimesNewRoman.addActionListener(this);
         iFontTimesNewRoman.setActionCommand("Times New Roman");
-        menuFormat.add(iFontHelvetica);
+        menuFont.add(iFontTimesNewRoman);
 
         menuFontSize = new JMenu("Font Size");
         menuFormat.add(menuFontSize);
@@ -129,27 +130,27 @@ public class GUI implements ActionListener {
         iFontSize8 = new JMenuItem("8");
         iFontSize8.addActionListener(this);
         iFontSize8.setActionCommand("size8");
-        menuFormat.add(iFontSize8);
+        menuFontSize.add(iFontSize8);
 
         iFontSize12 = new JMenuItem("12");
         iFontSize12.addActionListener(this);
         iFontSize12.setActionCommand("size12");
-        menuFormat.add(iFontSize12);
+        menuFontSize.add(iFontSize12);
 
         iFontSize16 = new JMenuItem("16");
         iFontSize16.addActionListener(this);
         iFontSize16.setActionCommand("size16");
-        menuFormat.add(iFontSize16);
+        menuFontSize.add(iFontSize16);
 
         iFontSize20 = new JMenuItem("20");
         iFontSize20.addActionListener(this);
         iFontSize20.setActionCommand("size20");
-        menuFormat.add(iFontSize20);
+        menuFontSize.add(iFontSize20);
 
         iFontSize24 = new JMenuItem("24");
         iFontSize24.addActionListener(this);
         iFontSize24.setActionCommand("size24");
-        menuFormat.add(iFontSize24);
+        menuFontSize.add(iFontSize24);
     }
 
 
@@ -163,6 +164,7 @@ public class GUI implements ActionListener {
             case "Save": file.save(); break;
             case "Save As": file.saveAs(); break;
             case "Exit": file.exit(); break;
+            case "Word Wrap": format.wordWrap(); break;
         }
     }
 }
